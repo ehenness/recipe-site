@@ -1,0 +1,27 @@
+{
+  "name": "recipe-site",
+  "version": "1.0.0",
+  "description": "Software Dev HW 2: create a website to add and store recipes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehenness/recipe-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ehenness/recipe-site/issues"
+  },
+  "homepage": "https://github.com/ehenness/recipe-site#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "mysql2": "^3.18.1"
+  }
+}
