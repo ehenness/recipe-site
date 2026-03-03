@@ -9,20 +9,20 @@ Software Dev HW 2: create a website to add and store recipes
 - Search/filter recipes
 
 ## Setup
-1. Clone repo
+1. Clone repo: 
 git clone https://github.com/ehenness/recipe-site.git
 
-2. Install dependencies
+2. Install dependencies: 
 npm install
 
-3. Create and populate DB
+3. Create and populate DB: 
 mysql -u root -p < recipe_db.sql
 
-4. Configure DB connection
+4. Configure DB connection: 
 May need to edit app.js password to match your credentials
 
-5. Start server
+5. Start server: 
 node app.js
 
-6. Visit
+6. Visit: 
 http://localhost:3000/
