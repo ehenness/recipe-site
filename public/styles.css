@@ -1,0 +1,110 @@
+/* Global body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fefefe;
+    color: #333;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+/* Headings */
+h1 {
+    color: #2a6b2f;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #2a6b2f;
+    margin-top: 25px;
+}
+
+/* Links */
+a {
+    color: #2a6b2f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Recipe instructions */
+p.instructions {
+    white-space: pre-line; /* preserves line breaks */
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Ingredient list */
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+li.ingredient {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 3px 5px;
+    border-radius: 4px;
+    display: list-item; /* vertical stacking */
+}
+
+/* Hover effect on ingredients */
+li.ingredient:hover {
+    background-color: #e6ffe6;
+}
+
+/* Tooltip / pop-up */
+#popup {
+    position: absolute;
+    display: none;
+    background: #fff8c4;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 5px;
+    max-width: 300px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    font-size: 0.9em;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* Back links */
+a.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Navbar container */
+nav {
+    display: flex;
+    justify-content: space-between; /* links on left, search on right */
+    align-items: center;
+    background-color: #2a6b2f;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Links */
+nav a {
+    color: #fff;
+    margin-right: 15px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Search input inside navbar */
+.nav-right input#recipe-search {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.9em;
+    width: 200px;
+}

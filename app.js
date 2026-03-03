@@ -46,13 +46,14 @@ app.get('/recipes', async (req, res) => {
         const sql = 'SELECT * FROM recipes ORDER BY protein_type';
         const [recipes] = await db.query(sql);
 
-        res.render('recipes', { recipes });
+        res.render('recipes', { recipes, currentPage: 'recipes' });
     } catch (err) {
         console.error(err);
         res.send("Database error");
     }
 });
 
+////////////// INDIVIDUAL RECIPES ///////////////////
 app.get('/recipes/:id', async (req, res) => {
     try {
         const recipeId = req.params.id;
@@ -64,7 +65,7 @@ app.get('/recipes/:id', async (req, res) => {
 
         const [ingredientResults] = await db.query(`
             SELECT ingredients.name, 
-                   ingredients.description,
+                   ingredients.info AS description,
                    recipe_ingredients.quantity
             FROM recipe_ingredients
             JOIN ingredients ON recipe_ingredients.ingredient_id = ingredients.id
@@ -82,7 +83,7 @@ app.get('/recipes/:id', async (req, res) => {
     }
 });
 
-// adding recipes
+////////////////////// RECIPE ADD ////////////////////
 app.get('/add-recipe', async (req, res) => {
     try {
         const [ingredients] = await db.query('SELECT * FROM ingredients ORDER BY name');

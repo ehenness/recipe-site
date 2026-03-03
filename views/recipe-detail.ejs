@@ -2,35 +2,55 @@
 <html>
 <head>
     <title><%= recipe.name %></title>
+    <link rel="stylesheet" href="/styles.css">
+
 </head>
 <body>
-
+    <%- include('partials/navbar') %>
+    
     <h1><%= recipe.name %></h1>
     <p><strong>Protein Type:</strong> <%= recipe.protein_type %></p>
 
     <h2>Ingredients</h2>
-<!-- 
     <ul>
-        <% ingredients.forEach(ingredient => { %>
-            <li>
-                <%= ingredient.quantity %> - <%= ingredient.name %>
+        <% ingredients.forEach(ing => { %>
+            <li class="ingredient" data-info="<%= ing.description %>">
+                <%= ing.name %> - <%= ing.quantity %>
             </li>
         <% }) %>
     </ul>
--->
-    <ul>
-        <% ingredients.forEach(ingredient => { %>
-            <li title="<%= ingredient.description %>">
-                <%= ingredient.quantity %> - <%= ingredient.name %>
-            </li>
-        <% }) %>
-    </ul>
-    
-    <h2>Instructions</h2>
-    <p><%= recipe.instructions %></p>
 
-    <br>
-    <a href="/recipes">Back to Recipes</a>
+    <h2>Instructions</h2>
+    <p class="instructions"><%= recipe.instructions %></p>
+
+    <a href="/recipes" class="back-link">← Back to Recipes</a>
+
+    <div id="popup"></div>
+
+    <script>
+        const ingredients = document.querySelectorAll('.ingredient');
+        const popup = document.getElementById('popup');
+
+        ingredients.forEach(item => {
+            item.addEventListener('mouseover', (e) => {
+                const info = item.dataset.info;
+                if (!info) return;
+                popup.textContent = info;
+                popup.style.display = 'block';
+                popup.style.top = e.pageY + 10 + 'px';
+                popup.style.left = e.pageX + 10 + 'px';
+            });
+
+            item.addEventListener('mousemove', (e) => {
+                popup.style.top = e.pageY + 10 + 'px';
+                popup.style.left = e.pageX + 10 + 'px';
+            });
+
+            item.addEventListener('mouseout', () => {
+                popup.style.display = 'none';
+            });
+        });
+    </script>
 
 </body>
 </html>

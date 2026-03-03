@@ -1,47 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Recipe List</title>
+    <title>All Recipes</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Remove bullet points from recipe lists */
+        ul.recipe-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.recipe-list li {
+            margin: 5px 0;
+        }
+
+        /* Search bar top right */
+        .search-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            padding: 5px 10px;
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Recipe List</h1>
+    <!-- Navbar -->
+    <%- include('partials/navbar') %>
 
-<h2>Seafood</h2>
-<% recipes.filter(r => r.protein_type === 'Seafood').forEach(recipe => { %>
-    <div>
-        <a href="/recipes/<%= recipe.id %>">
-            <%= recipe.name %>
-        </a>
+    <!-- Search bar at top right -->
+    <div class="search-container">
+        <input type="text" id="recipe-search" placeholder="Search recipes...">
     </div>
-<% }) %>
 
-<h2>Chicken</h2>
-<% recipes.filter(r => r.protein_type === 'Chicken').forEach(recipe => { %>
-    <div>
-        <a href="/recipes/<%= recipe.id %>">
-            <%= recipe.name %>
-        </a>
-    </div>
-<% }) %>
+    <h1>All Recipes</h1>
 
-<h2>Pork</h2>
-<% recipes.filter(r => r.protein_type === 'Pork').forEach(recipe => { %>
-    <div>
-        <a href="/recipes/<%= recipe.id %>">
-            <%= recipe.name %>
-        </a>
-    </div>
-<% }) %>
+    <!-- Fixed list of protein types -->
+    <% const allProteinTypes = ['Chicken', 'Beef', 'Pork', 'Seafood', 'Tofu', 'Grains', 'Vegetarian']; %>
 
-<h2>Beef</h2>
-<% recipes.filter(r => r.protein_type === 'Beef').forEach(recipe => { %>
-    <div>
-        <a href="/recipes/<%= recipe.id %>">
-            <%= recipe.name %>
-        </a>
-    </div>
-<% }) %>
+    <% allProteinTypes.forEach(type => { %>
+        <h2><%= type %></h2>
+        <ul class="recipe-list" id="recipe-list-<%= type.toLowerCase() %>">
+            <% recipes.filter(r => r.protein_type === type).forEach(recipe => { %>
+                <li class="recipe-item" 
+                    data-name="<%= recipe.name.toLowerCase() %>" 
+                    data-protein="<%= recipe.protein_type.toLowerCase() %>">
+                    <a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a>
+                </li>
+            <% }) %>
+        </ul>
+    <% }) %>
+
+    <!-- Search/filter JS -->
+    <script>
+        const searchInput = document.getElementById('recipe-search');
+        const recipeItems = document.querySelectorAll('.recipe-item');
+
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+
+            recipeItems.forEach(recipe => {
+                const name = recipe.dataset.name;
+                const protein = recipe.dataset.protein;
+
+                if (name.includes(filter) || protein.includes(filter)) {
+                    recipe.style.display = 'list-item';
+                } else {
+                    recipe.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

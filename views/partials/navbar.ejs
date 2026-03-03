@@ -1,0 +1,15 @@
+<% const page = typeof currentPage !== 'undefined' ? currentPage : ''; %>
+
+<nav>
+    <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/recipes">All Recipes</a>
+        <a href="/add-recipe">Add Recipe</a>
+    </div>
+
+    <% if (page === 'recipes') { %>
+    <div class="nav-right">
+        <input type="text" id="recipe-search" placeholder="Search recipes...">
+    </div>
+    <% } %>
+</nav>

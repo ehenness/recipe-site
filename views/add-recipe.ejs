@@ -1,5 +1,11 @@
 <!-- add-recipe.ejs -->
+<body>
+    <%- include('partials/navbar') %>
+</body>
 <h1>Add a New Recipe</h1>
+<head> 
+    <link rel="stylesheet" href="/styles.css">
+</head>
 
 <form action="/add-recipe" method="POST">
     <label for="name">Recipe Name:</label>
@@ -7,12 +13,12 @@
 
     <label for="protein_type">Protein Type:</label>
     <select id="protein_type" name="protein_type" required>
-        <option value="Chicken">Chicken</option>
         <option value="Beef">Beef</option>
-        <option value="Seafood">Seafood</option>
-        <option value="Pork">Pork</option>
-        <option value="Tofu">Tofu</option>
+        <option value="Chicken">Chicken</option>
         <option value="Grains">Grains</option>
+        <option value="Pork">Pork</option>
+        <option value="Seafood">Seafood</option>
+        <option value="Tofu">Tofu</option>
         <option value="Other">Other</option>
     </select>
 
