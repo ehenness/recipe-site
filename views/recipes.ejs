@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe List</title>
+</head>
+<body>
+
+<h1>Recipe List</h1>
+
+<h2>Seafood</h2>
+<% recipes.filter(r => r.protein_type === 'Seafood').forEach(recipe => { %>
+    <div>
+        <a href="/recipes/<%= recipe.id %>">
+            <%= recipe.name %>
+        </a>
+    </div>
+<% }) %>
+
+<h2>Chicken</h2>
+<% recipes.filter(r => r.protein_type === 'Chicken').forEach(recipe => { %>
+    <div>
+        <a href="/recipes/<%= recipe.id %>">
+            <%= recipe.name %>
+        </a>
+    </div>
+<% }) %>
+
+<h2>Pork</h2>
+<% recipes.filter(r => r.protein_type === 'Pork').forEach(recipe => { %>
+    <div>
+        <a href="/recipes/<%= recipe.id %>">
+            <%= recipe.name %>
+        </a>
+    </div>
+<% }) %>
+
+<h2>Beef</h2>
+<% recipes.filter(r => r.protein_type === 'Beef').forEach(recipe => { %>
+    <div>
+        <a href="/recipes/<%= recipe.id %>">
+            <%= recipe.name %>
+        </a>
+    </div>
+<% }) %>
+
+</body>
+</html>
